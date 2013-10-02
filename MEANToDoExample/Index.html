@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="myToDoApp">
+<head>
+    <meta charset="utf-8">
+    <title>My ToDo App</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/2.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body ng-cloak>
+<div class="btn-toolbar"></div>
+<div ng-controller="todocontroller" class="text-center span4">
+<h5>
+    <span >{{remaining()}} of {{todos.length}} remaining</span>
+    [ <a href="" ng-click="archive()">Archive Completed</a> ]
+</h5>
+<div class="btn-toolbar"></div>
+    <form ng-submit="addTodo()"class="input-append">
+      <input type="text" ng-model="todoText"  size="30"
+             placeholder="add new todo here" class="col-md-6">
+      <input class= "btn btn-default btn-lg" type="submit" value="add">
+    </form>
+    <ul class="unstyled">
+      <li ng-repeat="todo in todos" class="text-left" >
+        <input type="checkbox" class ="checkbox"  ng-model="todo.done">
+        <span class="done-{{todo.done}}">{{todo.text}}</span>
+      </li>
+    </ul>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/todocontroller.js"></script>
+</body>
+</html>
